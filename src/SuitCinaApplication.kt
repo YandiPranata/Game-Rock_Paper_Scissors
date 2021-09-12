@@ -17,21 +17,18 @@ private fun startSuitWithCom() {
     val compSuit = resultList.random()
 
     println("computer milih -> ${compSuit.name}")
-    println("input suit (kertas, gunting, batu)")
-    val input = readLine()
+    println("Input suit (rock | paper | scissors)")
+//    val input = readLine()
 
-    // TODO: 07/09/21 "Tugas buat hari kemis, 9/9/21" -> solved this line (use do-while)
-    /**
-     * Temen2 ngerjakan loop ketika user input selain gunting, batu, kertas
-     * User input selain gunting, batu, kertas -> fungsi redline s/d success -> di loop (diulangin)
-     * User disuruh input lagi
-     * */
-    do {
+
+    loop@ while(true){
+        println("Input Pemain 1: ")
+        val input = readLine()
         val mySuit = when (input) {
-            "gunting" -> Scissors(StringContainer.scissors)
-            "batu" -> Rock(StringContainer.rock)
+            "scissors" -> Scissors(StringContainer.scissors)
+            "rock" -> Rock(StringContainer.rock)
             "paper" -> Paper(StringContainer.paper)
-            else -> Paper(StringContainer.paper)
+            else -> continue@loop
         }
 
         val result = mySuit.actionAgainst(compSuit)
@@ -44,10 +41,7 @@ private fun startSuitWithCom() {
         } else {
             break
         }
-        println(input)
-
-    } while (input != "gunting" && input != "batu" && input != "kertas")
-
+    }
 
 }
 
